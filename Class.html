@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FashionMood - دنیای مد و استایل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #d4af37;
+            --accent-color: #e63946;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --text-color: #333;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background-color: #fff;
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-color);
+            padding: 1.2rem 0;
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        header.scrolled {
+            padding: 0.8rem 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            color: var(--primary-color);
+        }
+        
+        .logo i {
+            margin-left: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-menu li {
+            margin: 0 0.8rem;
+            position: relative;
+        }
+        
+        .nav-menu a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            position: relative;
+        }
+        
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: var(--transition);
+        }
+        
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-icons {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-icon {
+            margin-left: 1.2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        
+        .nav-icon:hover {
+            color: var(--secondary-color);
+        }
+        .hero {
+            padding: 8rem 0 5rem;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            padding: 1rem 2.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn:hover {
+            background: #c99c2a;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            margin-right: 1rem;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary-color);
+        }
+        
+        .new-collection {
+            padding: 6rem 0;
+            background: var(--light-color);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1.2rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+        }
+        
+        .section-title p {
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .collection-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .collection-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .collection-img {
+            height: 380px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .collection-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .collection-item:hover .collection-img img {
+            transform: scale(1.05);
+        }
+        
+        .collection-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+            opacity: 0;
+            transition: var(--transition);
+            display: flex;
+            align-items: flex-end;
+            padding: 2rem;
+        }
+        
+        .collection-item:hover .collection-overlay {
+            opacity: 1;
+        }
+        
+        .collection-info {
+            padding: 1.8rem;
+        }
+        
+        .collection-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--primary-color);
+        }
+        
+        .collection-info p {
+            color: #666;
+            margin-bottom: 1.2rem;
+            line-height: 1.7;
+        }
+        
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .models {
+            padding: 6rem 0;
+            background: white;
+        }
+        
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .model-card {
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .model-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .model-img {
+            height: 450px;
+            overflow: hidden;
+        }
+        
+        .model-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .model-card:hover .model-img img {
+            transform: scale(1.05);
+        }
+        
+        .model-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+        
+        .model-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .model-info p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+        
+        .fashion-show {
+            padding: 6rem 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.85)), url('https://images.unsplash.com/photo-1593795899768-846d37d52dc1?ixlib=rb-4.0.3') center/cover fixed no-repeat;
+            color: white;
+            text-align: center;
+        }
+        
+        .fashion-show h2 {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+        
+        .fashion-show p {
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            min-width: 100px;
+            backdrop-filter: blur(5px);
+        }
+        
+        .countdown-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+        }
+        
+        .countdown-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .blog {
+            padding: 6rem 0;
+            background: var(--light-color);
+        }
+        
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .blog-img {
+            height: 250px;
+            overflow: hidden;
+        }
+        
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .blog-card:hover .blog-img img {
+            transform: scale(1.05);
+        }
+        
+        .blog-info {
+            padding: 1.8rem;
+        }
+        
+        .blog-date {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .blog-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+        
+        .blog-info p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+        
+        .read-more {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: var(--transition);
+        }
+        
+        .read-more i {
+            margin-right: 0.5rem;
+            transition: var(--transition);
+        }
+        
+        .read-more:hover {
+            color: var(--primary-color);
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        .newsletter {
+            padding: 5rem 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 2.5rem;
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            border-radius: 30px 0 0 30px;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .newsletter-btn {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            border: none;
+            padding: 0 1.8rem;
+            border-radius: 0 30px 30px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .newsletter-btn:hover {
+            background: #c99c2a;
+        }
+        
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.8rem;
+            position: relative;
+            padding-bottom: 0.8rem;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--secondary-color);
+        }
+        
+        .footer-column p {
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+            line-height: 1.7;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.9rem;
+        }
+        
+        .footer-column ul li a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+        }
+        
+        .footer-column ul li a i {
+            margin-left: 0.5rem;
+            font-size: 0.8rem;
+        }
+        
+        .footer-column ul li a:hover {
+            opacity: 1;
+            color: var(--secondary-color);
+            transform: translateX(5px);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.8rem;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .social-icons a:hover {
+            background: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .instagram-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.5rem;
+        }
+        
+        .instagram-item {
+            height: 80px;
+            overflow: hidden;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .instagram-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 300px;
+                height: 100vh;
+                background: white;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 2rem;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: var(--transition);
+                z-index: 1000;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .nav-menu li {
+                margin: 1.2rem 0;
+            }
+            
+            .menu-toggle {
+                display: block;
+                font-size: 1.5rem;
+                cursor: pointer;
+                z-index: 1001;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .countdown {
+                flex-wrap: wrap;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 30px;
+                margin-bottom: 1rem;
+            }
+            
+            .newsletter-btn {
+                border-radius: 30px;
+                padding: 1rem;
+            }
+            
+            .btn-outline {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero {
+                padding: 7rem 0 4rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 1.8rem;
+            }
+            
+            .collection-grid, .models-grid, .blog-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+        <div class="container nav-container">
+            <div class="logo">
+                <span>FashionMood</span>
+                <i class="fas fa-crown"></i>
+            </div>
+            
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#">کور صفحه</a></li>
+                <li><a href="#">مجموعه‌ها</a></li>
+                <li><a href="#">مودل‌ها</a></li>
+                <li><a href="#">برندها</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="https://wa.me/93796304080">تماس</a></li>
+            </ul>
+            
+            <div class="nav-icons">
+                <div class="nav-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-shopping-bag"></i>
+                </div>
+                <div class="nav-icon">
+                    <i class="fas fa-user"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>زیبایی را در استایل منحصر به فرد کشف کنید</h1>
+            <p>با جدیدترین ترندهای فشن برای فصل خزان و زمستان ۲۰۲۳ آشنا شوید و استایل تان را متحول سازید.</p>
+            <div class="hero-buttons">
+                <a href="https://chishi.ir/101460-lebas-afghani-zanane-shik/" class="btn btn-outline">مشاهده مجموعه</a>
+                <a href="https://www.instagram.com/afghan_mark/" class="btn">خرید آنلاین</a>
+            </div>
+        </div>
+    </section>
+    <section class="new-collection">
+        <div class="container">
+            <div class="section-title">
+                <h2>مجموعه جدید</h2>
+                <p>آخرین دیزاین‌های ما را کشف کنید و از استایل منحصر به فرد خود لذت ببرید.</p>
+            </div>
+            
+            <div class="collection-grid">
+                <div class="collection-item">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1525299374597-911581e1bdef?ixlib=rb-4.0.3" alt="Collection Item">
+                        <div class="collection-overlay">
+                            <a href="#" class="btn">مشاهده جزئیات</a>
+                        </div>
+                    </div>
+                    <div class="collection-info">
+                        <h3>کت پشمی کلاسیک</h3>
+                        <p>کت پشمی با طراحی مدرن و کلاسیک برای فصل زمستان</p>
+                        <div class="price">
+                            <span>۳,۲۰۰ افغانی</span>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-4.0.3" alt="Collection Item">
+                        <div class="collection-overlay">
+                            <a href="#" class="btn">مشاهده جزئیات</a>
+                        </div>
+                    </div>
+                    <div class="collection-info">
+                        <h3>دامن ابریشمی</h3>
+                        <p>دامن ابریشمی با طراحی شیک و مجلسی برای مهمانی‌ها</p>
+                        <div class="price">
+                            <span>۲,۱۰۰ افغانی</span>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="collection-item">
+                    <div class="collection-img">
+                        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-4.0.3" alt="Collection Item">
+                        <div class="collection-overlay">
+                            <a href="#" class="btn">مشاهده جزئیات</a>
+                        </div>
+                    </div>
+                    <div class="collection-info">
+                        <h3>کفش چرمی زنانه</h3>
+                        <p>کفش چرمی با کیفیت بالا و طراحی اروپایی</p>
+                        <div class="price">
+                            <span>۱,۸۰۰ افغانی</span>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="models">
+        <div class="container">
+            <div class="section-title">
+                <h2>مودل‌های ما</h2>
+                <p>با تیم حرفه‌ای مودلینگ ما آشنا شوید.</p>
+            </div>
+            
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-img">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3" alt="Model">
+                    </div>
+                    <div class="model-info">
+                        <h3>سارا محمدی</h3>
+                        <p>مودل بین‌المللی</p>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-img">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3" alt="Model">
+                    </div>
+                    <div class="model-info">
+                        <h3>امیررضا حسینی</h3>
+                        <p>مودل فشن</p>
+                    </div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-img">
+                        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?ixlib=rb-4.0.3" alt="Model">
+                    </div>
+                    <div class="model-info">
+                        <h3>نیلوفر کریمی</h3>
+                        <p>مودل و influencer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="fashion-show">
+        <div class="container">
+            <h2>شوی فشن زمستانی ۲۰۲۳</h2>
+            <p>در شوی فشن exclusive ما شرکت کنید و از جدیدترین دیزاین‌های فصل زمستان دیدن کنید.</p>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="days">12</div>
+                    <div class="countdown-label">روز</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">18</div>
+                    <div class="countdown-label">ساعت</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">45</div>
+                    <div class="countdown-label">دقیقه</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">30</div>
+                    <div class="countdown-label">ثانیه</div>
+                </div>
+            </div>
+            
+            <a href="#" class="btn">رزرو بلیت</a>
+        </div>
+    </section>
+    <section class="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>مجله فشن</h2>
+                <p>آخرین مقالات و اخبار دنیای فشن را دنبال کنید.</p>
+            </div>
+            
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?ixlib=rb-4.0.3" alt="Blog Post">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">۲ میزان ۱۴۰۲</span>
+                        <h3>ترندهای رنگ خزان و زمستان ۲۰۲۳</h3>
+                        <p>در این مقاله با ترندهای رنگ فصل سرد سال آشنا می‌شوید و نحوه ست کردن آن‌ها را یاد می‌گیرید.</p>
+                        <a href="https://mag.sarak-co.com/trend-colors-fall-winter/" class="read-more">
+                            <i class="fas fa-arrow-left"></i>
+                            ادامه مطلب
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?ixlib=rb-4.0.3" alt="Blog Post">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">۲۸ سنبله ۱۴۰۲</span>
+                        <h3>چگونه برای مهمانی استایل مناسب انتخاب کنیم؟</h3>
+                        <p>راهنمای کامل انتخاب استایل مناسب برای انواع مهمانی‌های رسمی و غیررسمی.</p>
+                        <a href="https://malltina.com/mag/%D9%84%D8%A8%D8%A7%D8%B3-%D9%85%D8%AC%D9%84%D8%B3%DB%8C/" class="read-more">
+                            <i class="fas fa-arrow-left"></i>
+                            ادامه مطلب
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="blog-card">
+                    <div class="blog-img">
+                        <img src="https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-4.0.3" alt="Blog Post">
+                    </div>
+                    <div class="blog-info">
+                        <span class="blog-date">۲۰ سنبله ۱۴۰۲</span>
+                        <h3>تاریخچه فشن افغانی و تاثیر آن بر فشن جهانی</h3>
+                        <p>نگاهی به تاریخچه پربار فشن و پوشاک افغانی و تاثیر آن بر صنعت فشن جهانی.</p>
+                        <a href="https://mag.sarak-co.com/afghan-clothing/" class="read-more">
+                            <i class="fas fa-arrow-left"></i>
+                            ادامه مطلب
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="newsletter">
+        <div class="container">
+            <h2>در خبرنامه ما عضو شوید</h2>
+            <p>با عضویت در خبرنامه از جدیدترین تخفیف‌ها، ترندها و رویدادهای فشن با خبر شوید.</p>
+            
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="آدرس ایمیل خود را وارد کنید">
+                <button type="submit" class="newsletter-btn">عضویت</button>
+            </form>
+        </div>
+    </section>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>درباره ما</h3>
+                    <p>فشن مود یک برند معتبر در حوزه فشن و مد است که با ارائه جدیدترین ترندهای روز دنیا، سعی در ایجاد استایل منحصر به فرد برای مشتریان خود دارد.</p>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/kapisa_2/?igsh=MW56ZGd5ZzQ4MWM5eA%3D%3D#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://t.me/kapisa_2"><i class="fab fa-telegram"></i></a>
+                        <a href="https://www.facebook.com/bellal.yaqoobi.3/map"><i class="fab fa-facebook"></i></a>
+                        <a href="https://www.youtube.com/@kapisagroup_2?si=EO6D706yaTFIIXzN"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>لینک‌های سریع</h3>
+                    <ul>
+                        <li><a href="https://share.google/images/HwxBZJZzlIXnQFSOO"><i class="fas fa-arrow-left"></i> کور صفحه</a></li>
+                        <li><a href="https://chishi.ir/101460-lebas-afghani-zanane-shik/"><i class="fas fa-arrow-left"></i> مجموعه‌ها</a></li>
+                        <li><a href="https://fa.wikipedia.org/wiki/%D8%B1%D8%AF%D9%87:%D9%85%D8%AF%D9%84%E2%80%8C%D9%87%D8%A7%DB%8C_%D8%B2%D9%86_%D8%A7%D9%87%D9%84_%D8%A7%D9%81%D8%BA%D8%A7%D9%86%D8%B3%D8%AA%D8%A7%D9%86"><i class="fas fa-arrow-left"></i> مودل‌ها</a></li>
+                        <li><a href="https://www.instagram.com/afghan_mark/"><i class="fas fa-arrow-left"></i> برندها</a></li>
+                        <li><a href="https://wa.me/93796304080"><i class="fas fa-arrow-left"></i> تماس با ما</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>ساعات کاری</h3>
+                    <ul>
+                        <li>شنبه تا چهارشنبه: ۹ بجه تا ۸ شب</li>
+                        <li>پنجشنبه: ۹ بجه تا ۶ عصر</li>
+                        <li>جمعه: ۱۰ بجه تا ۴ عصر</li>
+                        <li>تعطیلات رسمی: تعطیل</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>آدرس ما</h3>
+                    <p>کابل، افغانستان</p>
+                    <p>ولایت کابل، شهر نو</p>
+                    <p>جاده میوند، پل هوتل کابل سرینا</p>
+                    <p>شماره تماس: 0770777097</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>تمامی حقوق این وبسایت محفوظ بوده و متعلق به FashionMood می‌باشد. © ۲۰۲۳</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+            window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+        
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+        function updateCountdown() {
+            const targetDate = new Date('2023-12-15T19:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }
+        
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    </script>
+</body>
+</html>
